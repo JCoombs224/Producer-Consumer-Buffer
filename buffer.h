@@ -1,7 +1,7 @@
 /**
 * Assignment 4: Producer Consumer Problem
  * @file buffer.h
- * @author ??? (TODO: your name)
+ * @author Jordan Aquino & Jamison Coombs
  * @brief header file for the buffer class
  * @version 0.1
  */
@@ -17,8 +17,10 @@ typedef int buffer_item;
  */
 class Buffer {
 private:
-    // TODO: Add your implementation of the buffer class here
-
+    // Add your implementation of the buffer class here
+	buffer_item *buffer;		// Pointer to fixed size array of buffer items . 
+	int capacity;			// limit of items in buffer at a time
+	int count = 0;			// number of items in the buffer. Initialized to zero.
 public:
     /**
      * @brief Construct a new Buffer object

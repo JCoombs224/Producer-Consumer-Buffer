@@ -1,7 +1,7 @@
 /**
 * Assignment 4: Producer Consumer Problem
  * @file main.cpp
- * @author ??? (TODO: your name)
+ * @author Jordan Aquino & Jamison Coombs
  * @brief The main program for the producer consumer problem.
  * @version 0.1
  */
@@ -55,6 +55,11 @@ void *consumer(void *param) {
 }
 
 int main(int argc, char *argv[]) {
+	if(argc < 4){
+		std::cout<<"Inadequate number of arguments provided.\n";
+	}
+
+
     /* TODO: 1. Get command line arguments argv[1],argv[2],argv[3] */
     /* TODO: 2. Initialize buffer and synchronization primitives */
     /* TODO: 3. Create producer thread(s).
