@@ -28,8 +28,19 @@ public:
      */
     Buffer(int size = 5);
 
+    /**
+     * @brief Construct a new Buffer object as a copy of another.
+     * 
+     * @param b1 - buffer to be copied
+     */
     Buffer(const Buffer& b1);
 
+    /**
+     * @brief Sets one buffer equivalent to another buffer.
+     * 
+     * @param rhs - copied buffer
+     * @return Buffer& 
+     */
     Buffer& operator=(Buffer const &rhs)
     {
         if(&rhs != this)

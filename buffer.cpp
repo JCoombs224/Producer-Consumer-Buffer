@@ -26,6 +26,11 @@
       capacity = size;
     }
 
+    /**
+     * @brief Construct a new Buffer object as a copy of another.
+     * 
+     * @param b1 - buffer to be copied
+     */
     Buffer::Buffer(const Buffer& b1)
     {
       capacity = b1.capacity;
@@ -60,15 +65,17 @@
      * @return true if successful
      * @return false if not successful
      */
-    buffer_item Buffer:: remove_item(){
-      if(count > 0)
+    buffer_item Buffer:: remove_item()
+    {
+      if(count > 0) // Ensure the buffer has items to be removed
       {
-    	  buffer_item res = buffer[0];
+    	  buffer_item res = buffer[0]; // get the front of the buffer
+        // shift buffer down
         for(int i = 0; i < capacity-1; i++)
           buffer[i] = buffer[i+1];
 
         count--;
-        return res;
+        return res; // return front of the buffer
       }
       return -1;
     }
