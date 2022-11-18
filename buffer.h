@@ -28,6 +28,8 @@ public:
      */
     Buffer(int size = 5);
 
+    Buffer(const Buffer& b1);
+
     /**
      * @brief Destroy the Buffer object
      */
@@ -47,7 +49,7 @@ public:
      * @return true if successful
      * @return false if not successful
      */
-    bool remove_item(buffer_item *item);
+    buffer_item remove_item();
 
     /**
      * @brief Get the size of the buffer
