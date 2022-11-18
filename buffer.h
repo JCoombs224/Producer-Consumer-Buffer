@@ -30,6 +30,18 @@ public:
 
     Buffer(const Buffer& b1);
 
+    Buffer& operator=(Buffer const &rhs)
+    {
+        if(&rhs != this)
+        {
+            delete[] buffer;
+            capacity = rhs.capacity;
+            count = 0;
+            buffer = new buffer_item[capacity];
+        }
+        return *this;
+    }
+
     /**
      * @brief Destroy the Buffer object
      */
