@@ -29,6 +29,31 @@ public:
     Buffer(int size = 5);
 
     /**
+     * @brief Construct a new Buffer object as a copy of another.
+     * 
+     * @param b1 - buffer to be copied
+     */
+    Buffer(const Buffer& b1);
+
+    /**
+     * @brief Sets one buffer equivalent to another buffer.
+     * 
+     * @param rhs - copied buffer
+     * @return Buffer& 
+     */
+    Buffer& operator=(Buffer const &rhs)
+    {
+        if(&rhs != this)
+        {
+            delete[] buffer;
+            capacity = rhs.capacity;
+            count = 0;
+            buffer = new buffer_item[capacity];
+        }
+        return *this;
+    }
+
+    /**
      * @brief Destroy the Buffer object
      */
     ~Buffer();
@@ -47,7 +72,7 @@ public:
      * @return true if successful
      * @return false if not successful
      */
-    bool remove_item(buffer_item *item);
+    buffer_item remove_item();
 
     /**
      * @brief Get the size of the buffer

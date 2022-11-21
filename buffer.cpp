@@ -9,6 +9,7 @@
 //You must complete the all parts marked as "TODO". Delete "TODO" after you are done.
 // Remember to add sufficient and clear comments to your code
 #include "buffer.h"
+#include <iostream>
 
 // TODO: Add your implementation of the buffer class here
 //
@@ -19,9 +20,21 @@
      */
     Buffer::Buffer(int size){
 	   // buffer is fixed size, 
-	   // but created dynamucally for 
+	   // but created dynamically for 
 	   // best class structure design
     	buffer = new buffer_item[size];
+      capacity = size;
+    }
+
+    /**
+     * @brief Construct a new Buffer object as a copy of another.
+     * 
+     * @param b1 - buffer to be copied
+     */
+    Buffer::Buffer(const Buffer& b1)
+    {
+      capacity = b1.capacity;
+      buffer = new buffer_item[capacity];
     }
 
     /**
@@ -37,8 +50,13 @@
      * @return true if successful
      * @return false if not successful
      */
-    bool Buffer ::insert_item(buffer_item item){
-    	return true;
+    bool Buffer::insert_item(buffer_item item){
+      if(count != capacity)
+      {
+        buffer[count++] = item;
+    	  return true;
+      }
+      return false;
     }
 
     /**
@@ -47,8 +65,19 @@
      * @return true if successful
      * @return false if not successful
      */
-    bool Buffer:: remove_item(buffer_item *item){
-    	return true;
+    buffer_item Buffer:: remove_item()
+    {
+      if(count > 0) // Ensure the buffer has items to be removed
+      {
+    	  buffer_item res = buffer[0]; // get the front of the buffer
+        // shift buffer down
+        for(int i = 0; i < capacity-1; i++)
+          buffer[i] = buffer[i+1];
+
+        count--;
+        return res; // return front of the buffer
+      }
+      return -1;
     }
 
     /**
@@ -89,4 +118,12 @@
      *
      */
     void Buffer:: print_buffer(){
+      std::cout << "Buffer: [";
+      for(int i = 0; i < count; i++)
+      {
+        std::cout << buffer[i];
+        if (i != count-1)
+          std::cout << ", ";
+      }
+      std::cout << "]\n";
     }
